@@ -7,9 +7,9 @@
   pip3 install pyautogui opencv-python Pillow mss
 
 使用前准备:
-  1. 运行 python3 wechat_red_pocket.py --capture 截取红包模板图片
+  1. 运行 python3 wechat_red_packet.py --capture 截取红包模板图片
   2. 确保微信窗口可见且在目标聊天框中
-  3. 运行 python3 wechat_red_pocket.py 开始监听
+  3. 运行 python3 wechat_red_packet.py 开始监听
 """
 
 import sys
@@ -36,7 +36,7 @@ except ImportError as e:
 ASSETS_DIR = os.path.join(os.path.dirname(__file__), "assets")  # 模板图片目录
 
 # 模板文件路径
-TEMPLATE_RED_POCKET = os.path.join(ASSETS_DIR, "red_pocket.png")   # 红包气泡截图
+TEMPLATE_RED_PACKET = os.path.join(ASSETS_DIR, "red_packet.png")   # 红包气泡截图
 TEMPLATE_KAI_BTN    = os.path.join(ASSETS_DIR, "kai_btn.png")   # "开" 按钮截图
 
 SCAN_INTERVAL     = 0.01    # 扫描间隔（秒）
@@ -133,7 +133,7 @@ def capture_template_interactive():
     print("请按照提示操作，脚本将引导你截取所需模板图片\n")
 
     templates = [
-        ("red_pocket",  TEMPLATE_RED_POCKET,  "红包气泡（聊天列表中的红包消息）"),
+        ("red_packet",  TEMPLATE_RED_PACKET,  "红包气泡（聊天列表中的红包消息）"),
         ("kai_btn",  TEMPLATE_KAI_BTN,  '"开" 按钮（点击红包后弹出的领取按钮）'),
     ]
 
@@ -169,29 +169,29 @@ def capture_template_interactive():
             log(f"⚠️  {path} 不存在，跳过")
 
     print("\n模板准备完成！")
-    print("运行 python3 wechat_red_pocket.py 开始监听红包")
+    print("运行 python3 wechat_red_packet.py 开始监听红包")
 
 
 # ─────────────────────────────────────────────
 # 主监听循环
 # ─────────────────────────────────────────────
 
-class RedPocketGrabber:
+class RedPacketGrabber:
     def __init__(self):
-        self.tmpl_red_pocket = load_template(TEMPLATE_RED_POCKET)
+        self.tmpl_red_packet = load_template(TEMPLATE_RED_PACKET)
         self.tmpl_kai        = load_template(TEMPLATE_KAI_BTN)
         self.last_grab_time = 0
         self.grab_count = 0
         self._running = True
 
     def check_templates(self):
-        if self.tmpl_red_pocket is None:
-            log(f"❌ 红包模板不存在: {TEMPLATE_RED_POCKET}")
-            log("   请先运行: python3 wechat_red_pocket.py --capture")
+        if self.tmpl_red_packet is None:
+            log(f"❌ 红包模板不存在: {TEMPLATE_RED_PACKET}")
+            log("   请先运行: python3 wechat_red_packet.py --capture")
             return False
         if self.tmpl_kai is None:
             log(f"❌ '开'按钮模板不存在: {TEMPLATE_KAI_BTN}")
-            log("   请先运行: python3 wechat_red_pocket.py --capture")
+            log("   请先运行: python3 wechat_red_packet.py --capture")
             return False
         log("✅ 模板加载成功")
         return True
@@ -200,7 +200,7 @@ class RedPocketGrabber:
         """尝试识别并点击红包，返回是否成功抢了一个"""
 
         # 1. 寻找红包气泡
-        result = find_template(screen, self.tmpl_red_pocket)
+        result = find_template(screen, self.tmpl_red_packet)
         if result is None:
             return False
 
@@ -273,7 +273,7 @@ def main():
     if args.capture:
         capture_template_interactive()
     else:
-        grabber = RedPocketGrabber()
+        grabber = RedPacketGrabber()
         grabber.run()
 
 

@@ -17,7 +17,7 @@
 1. 克隆本项目并进入目录：
 ```bash
 # git clone <你的仓库地址>
-cd "wechat pocket"
+cd "wechat pocket" # Note: directory name remains unchanged
 ```
 
 2. 安装所需的 Python 依赖：
@@ -36,7 +36,7 @@ pip3 install pyautogui opencv-python Pillow mss
 因为每个人的屏幕分辨率和 UI 缩放比例不同，所以在正式运行前，你需要先截取属于你屏幕的模板图片。
 
 ```bash
-python3 wechat_red_pocket.py --capture
+python3 wechat_red_packet.py --capture
 ```
 运行后，按照终端里的交互提示截取两张图：
 1. **红包气泡**：聊天窗口中出现的红包消息。
@@ -48,12 +48,12 @@ python3 wechat_red_pocket.py --capture
 打开你要抢红包的目标微信聊天窗口，确保它在屏幕上可见。然后运行：
 
 ```bash
-python3 wechat_red_pocket.py
+python3 wechat_red_packet.py
 ```
 脚本将开始监控屏幕，并在下一个红包出现时自动帮你抢到手！
 
 ## 🔧 高级配置
-你可以通过传递命令行参数，或者直接修改 `wechat_red_pocket.py` 顶部的全局变量来微调脚本性能：
+你可以通过传递命令行参数，或者直接修改 `wechat_red_packet.py` 顶部的全局变量来微调脚本性能：
 - `--interval`: 截屏扫描间隔（默认极快，如果占用过多 CPU 可适当调大）。
 - `--threshold`: OpenCV 图像匹配的置信度阈值（0~1，越靠近1越严格）。
 
