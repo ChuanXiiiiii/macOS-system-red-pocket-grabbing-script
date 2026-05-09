@@ -1,1 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+.venv/
+env/
+.env
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Script assets (personal screenshots)
+assets/*.png
+assets/_tmp_*.png
