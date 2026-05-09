@@ -243,6 +243,11 @@ class RedPacketGrabber:
                 if self.try_grab(screen):
                     log("✅ 任务完成，退出程序")
                     return
+                    
+                    # 💡 如果你想让脚本抢到红包后继续运行（一直监听下一个红包），
+                    # 请注释掉上面的 `log("✅ 任务完成...")` 和 `return`，
+                    # 并取消下面代码的注释（加个延迟防止疯狂点击同一个已领取的红包）：
+                    # time.sleep(3.0)
                 time.sleep(SCAN_INTERVAL)
         except KeyboardInterrupt:
             log("\n⏹  已手动停止")
