@@ -1,9 +1,9 @@
-# 微信红包自动抢脚本 (macOS M4)
+# macOS抢微信红包脚本
 
-一个适用于 macOS 的微信全自动抢红包 Python 脚本。专门针对 Apple Silicon (M4) 芯片和 Retina 显示屏进行了优化。
+微信电脑版更新之后，惊奇的发现电脑也可以领取红包了，于是写了一个适用于 macOS 的微信全自动抢红包 Python 脚本。
 
 ## 🚀 工作原理
-脚本通过高频率连续截屏，并使用 **OpenCV 多尺度模板匹配** 来检测聊天列表中的红包气泡。一旦发现红包，就会调用 `PyAutoGUI` 模拟鼠标点击，等待金色的“开”按钮出现后再次点击领取。
+脚本通过高频率连续截屏，使用 **OpenCV 多尺度模板匹配** 来检测聊天列表中的红包气泡（没办法，目前笨人只能做得到用最笨的方法抢）。发现红包调用 `PyAutoGUI` 模拟鼠标点击，等待“开”按钮出现后再次点击领取。
 
 成功抢到一个红包后，脚本会自动退出。
 
@@ -17,7 +17,7 @@
 1. 克隆本项目并进入目录：
 ```bash
 # git clone <你的仓库地址>
-cd "wechat pocket" # Note: directory name remains unchanged
+cd "macOS system red packet grabbing script"
 ```
 
 2. 安装所需的 Python 依赖：
