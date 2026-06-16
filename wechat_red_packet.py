@@ -41,7 +41,7 @@ TEMPLATE_KAI_BTN    = os.path.join(ASSETS_DIR, "kai_btn.png")   # "开" 按钮�
 
 SCAN_INTERVAL     = 0.01    # 扫描间隔（秒）
 MATCH_THRESHOLD   = 0.75   # 模板匹配置信度阈值
-CLICK_DELAY       = 0.03   # 点击后等待时间（秒）
+CLICK_DELAY       = 0.05   # 点击后等待时间（秒）
 KAI_WAIT          = 0.7    # 点击红包后等待"开"按钮出现的时间（秒）
 
 # 监控区域（None = 全屏，也可指定 {"top":y, "left":x, "width":w, "height":h}）
